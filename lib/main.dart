@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/account.dart';
+
+import 'confirm.dart';
 
 void main() {
   runApp(MyApp());
@@ -101,6 +104,18 @@ void customAlertDialog(BuildContext context) {
   var dialog = AlertDialog(
     title: Text('Do you want add some items.'),
     content: Text('Attention'),
+    actions: [
+      RaisedButton(onPressed: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => Confirm()));
+      },
+      child: Text('Confirm', style: TextStyle(fontSize: 18.0, color: Colors.white),),
+      color: Colors.green,),
+      RaisedButton(onPressed: () {
+        Navigator.pop(context);
+      },
+      child: Text('Cancel', style: TextStyle(fontSize: 18.0, color: Colors.white),),
+      color: Colors.redAccent,)
+    ],
   );
-  showDialog(context: context, builder: (context) => dialog);
+  showDialog(context: context, barrierDismissible: false, builder: (context) => dialog);
 }
